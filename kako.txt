@@ -1,0 +1,6 @@
+.env se izgeneiriao sa naredbom
+echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env
+
+potrebno je da se osiguraju user permisioni da budu isti u containeru kao i na lokalnoj masini
+
+------------
