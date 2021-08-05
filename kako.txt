@@ -4,3 +4,25 @@ echo -e "AIRFLOW_UID=$(id -u)\nAIRFLOW_GID=0" > .env
 potrebno je da se osiguraju user permisioni da budu isti u containeru kao i na lokalnoj masini
 
 ------------
+Naredba za download i kreiranje svega
+docker-compose up airflow-init
+
+Naredba za podizanje masinerije
+docker-compose up
+
+Naredba za gasenje masinerije
+docker-compose down
+
+popis pokrenutih containera
+docker ps
+
+otvori
+http://localhost:8080
+
+ako zelis komunicirati sa nekim conatinerom
+docker exec id-containera-web-servera airflow version
+
+ili preko api-a
+curl -X GET --user "airflow:airflow" "http://localhost:8080/api/v1/dags"
+da bi to radilo zasluzna je AIRFLOW__API__AUTH_BACKEND postavka
+
