@@ -21,8 +21,9 @@ with DAG(
         python_callable=callable_virtualenv,
         # requirements=["pandas==1.3.1"], # prepises iz Pipfile-a
         requirements=["pandas"], # prepises iz Pipfile-a
-        python_version = "3", # prepises iz Pipfile-a
-        system_site_packages=True # zabranis uzimanje paketa iz globalnog okruzenja (mora true kako bi mogao do custom jobs modula)
+        python_version = "3.6", # prepises iz Pipfile-a - trenutno airflow podrzava do 3.6
+        system_site_packages=True, # zabranis uzimanje paketa iz globalnog okruzenja (mora true kako bi mogao do custom jobs modula)
+        use_dill=False,
     )
 
     # app_run = PythonOperator(
