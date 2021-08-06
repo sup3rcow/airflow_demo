@@ -26,3 +26,10 @@ ili preko api-a
 curl -X GET --user "airflow:airflow" "http://localhost:8080/api/v1/dags"
 da bi to radilo zasluzna je AIRFLOW__API__AUTH_BACKEND postavka
 
+--------
+Cleaning up
+
+To stop and delete containers, delete volumes with database data and download images, run:
+
+docker-compose down --volumes --rmi all
+-------------
