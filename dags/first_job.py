@@ -56,3 +56,6 @@ with DAG(
             #vop_kwargs={"title": "Perica", "subtitle": "Mali"}
             op_kwargs={"default_conf": {"title": "Perica", "subtitle": "Mali"}}
         )
+
+# svaki job sebi da hendla defaultne confige neovisno o dag-u,
+# svaki job treba primiti dag_run.conf disct i onda imati svoju logiku za preuzimanje i gazenje defaultnih vrijednosti
