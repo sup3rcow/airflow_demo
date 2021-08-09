@@ -20,6 +20,9 @@ def callable_virtualenv(dag_run, default_conf):
     # module = getattr(package, 'app')
     # module.run()
 
+def eee(aa):
+    print(aa)
+
 with DAG(
     "first_job", # id konvencija da se zove isto kao i fajl
     start_date=datetime(2021, 1, 1),
@@ -27,20 +30,29 @@ with DAG(
     catchup=False # nemoj izvrsiti job za prosla vremena.. ako je start_date u proslosti
 ) as dag: # context manager
 
-# https://airflow.apache.org/docs/apache-airflow/stable/howto/operator/python.html#pythonvirtualenvoperator
-    app_run = PythonVirtualenvOperator(
-        task_id="app_run", # svaki task mora imati unique id
-        python_callable=callable_virtualenv,
-        # requirements=["pandas==1.3.1"], # prepises iz Pipfile-a
-        requirements=["pandas", "geopandas"], # prepises iz Pipfile-a
-        python_version = "3.6", # prepises iz Pipfile-a - trenutno airflow podrzava do 3.6
-        system_site_packages=True, # zabranis uzimanje paketa iz globalnog okruzenja (mora true kako bi mogao do custom jobs modula)
-        use_dill=False,
-        #vop_kwargs={"title": "Perica", "subtitle": "Mali"}
-        op_kwargs={"default_conf": {"title": "Perica", "subtitle": "Mali"}}
-    )
+    conf = dag.get_last_dagrun(include_externally_triggered=True).conf # iz konfiguracije mozes uzeti parametre potrebne za dinamicko pozivanje
+    image_id = conf.get('image_id')
 
-    # app_run = PythonOperator(
-    #     task_id="app_run", # svaki task mora imati unique id
-    #     python_callable=run
-    # )
+    def zzz():
+        print(conf)
+        print(image_id)
+        eee('muuu')
+
+    if image_id:
+        app_run = PythonOperator(
+            task_id="app_run", # svaki task mora imati unique id
+            python_callable=zzz
+        )
+    else:
+        # https://airflow.apache.org/docs/apache-airflow/stable/howto/operator/python.html#pythonvirtualenvoperator
+        app_run = PythonVirtualenvOperator(
+            task_id="app_run", # svaki task mora imati unique id
+            python_callable=callable_virtualenv,
+            # requirements=["pandas==1.3.1"], # prepises iz Pipfile-a
+            requirements=["pandas", "geopandas"], # prepises iz Pipfile-a
+            python_version = "3.6", # prepises iz Pipfile-a - trenutno airflow podrzava do 3.6
+            system_site_packages=True, # zabranis uzimanje paketa iz globalnog okruzenja (mora true kako bi mogao do custom jobs modula)
+            use_dill=False,
+            #vop_kwargs={"title": "Perica", "subtitle": "Mali"}
+            op_kwargs={"default_conf": {"title": "Perica", "subtitle": "Mali"}}
+        )
