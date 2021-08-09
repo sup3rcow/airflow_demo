@@ -5,17 +5,16 @@ from datetime import datetime # potrebno za konfiguraciju dag-a
 
 from jobs.first_job.app import run
 
-def callable_virtualenv(dag_run, title, subtitle):
+def callable_virtualenv(dag_run, default_conf):
     from jobs.first_job.app import run
     # ne funkcionira sa PythonVirtualenvOperator
     # from airflow.operators.python import get_current_context
     # context = get_current_context()
     # print(context['dag_run'].conf['title'])
 
-    # varijable iz op_kwargs
-    print(title)
-    print(subtitle)
-    # varijable iz dag_run
+    if not dag_run.conf: # ako se dag ne pozove sa config-om koristi defaultni
+        dag_run.conf = default_conf
+
     print(dag_run.conf.get('title'))
     print(dag_run.conf.get('subtitle'))
     run()
@@ -36,7 +35,8 @@ with DAG(
         python_version = "3.6", # prepises iz Pipfile-a - trenutno airflow podrzava do 3.6
         system_site_packages=True, # zabranis uzimanje paketa iz globalnog okruzenja (mora true kako bi mogao do custom jobs modula)
         use_dill=False,
-        op_kwargs={"title": "Perica", "subtitle": "Mali"}
+        #vop_kwargs={"title": "Perica", "subtitle": "Mali"}
+        op_kwargs={"default_conf": {"title": "Perica", "subtitle": "Mali"}}
     )
 
     # app_run = PythonOperator(
