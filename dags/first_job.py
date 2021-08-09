@@ -14,6 +14,11 @@ def callable_virtualenv(dag_run, default_conf):
     print(dag_run.conf.get('title'))
     print(dag_run.conf.get('subtitle'))
     run()
+    
+    # dinamicki import joba (npr preko dag_run, defniramo ""jobs.first_job"", a po konvenciji da se package mora zvati app.py, a ulazna metoda run)
+    # package = __import__("jobs.first_job", fromlist=["app"])
+    # module = getattr(package, 'app')
+    # module.run()
 
 with DAG(
     "first_job", # id konvencija da se zove isto kao i fajl

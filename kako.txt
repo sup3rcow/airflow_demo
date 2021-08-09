@@ -33,3 +33,6 @@ To stop and delete containers, delete volumes with database data and download im
 
 docker-compose down --volumes --rmi all
 -------------
+
+.env
+AIRFLOW_IMAGE_NAME=apache/airflow-ci:main-python3.8 ---- ne radi dobro raspada se web sucelje
