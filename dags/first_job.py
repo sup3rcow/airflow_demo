@@ -7,10 +7,6 @@ from jobs.first_job.app import run
 
 def callable_virtualenv(dag_run, default_conf):
     from jobs.first_job.app import run
-    # ne funkcionira sa PythonVirtualenvOperator
-    # from airflow.operators.python import get_current_context
-    # context = get_current_context()
-    # print(context['dag_run'].conf['title'])
 
     if not dag_run.conf: # ako se dag ne pozove sa config-om koristi defaultni
         dag_run.conf = default_conf
