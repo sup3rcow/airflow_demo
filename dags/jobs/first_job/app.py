@@ -1,5 +1,5 @@
 import pandas as pd
-# import geopandas as gp
+import geopandas as gpd
 import sys
 
 def run():
@@ -7,6 +7,7 @@ def run():
 
     print('First job - start')
     print(pd.__version__)
+    print(gpd.__version__)
     d = {'col1': [1, 2], 'col2': [3, 4]}
     df = pd.DataFrame(data=d)
     print(df)
