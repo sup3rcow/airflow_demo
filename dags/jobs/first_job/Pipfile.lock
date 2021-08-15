@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "0efd9c4b8590cda4a955a3d619bade5cdd77f2cf7fc09057a3855c1f971964cf"
+            "sha256": "87534d30161234cf45b2b192aa04ea23e980c7f03aabc269c39ec66565880149"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -219,5 +219,41 @@
             "version": "==1.16.0"
         }
     },
-    "develop": {}
+    "develop": {
+        "altgraph": {
+            "hashes": [
+                "sha256:1f05a47122542f97028caf78775a095fbe6a2699b5089de8477eb583167d69aa",
+                "sha256:c623e5f3408ca61d4016f23a681b9adb100802ca3e3da5e718915a9e4052cebe"
+            ],
+            "version": "==0.17"
+        },
+        "macholib": {
+            "hashes": [
+                "sha256:0c436bc847e7b1d9bda0560351bf76d7caf930fb585a828d13608839ef42c432",
+                "sha256:c500f02867515e6c60a27875b408920d18332ddf96b4035ef03beddd782d4281"
+            ],
+            "markers": "sys_platform == 'darwin'",
+            "version": "==1.14"
+        },
+        "pyinstaller": {
+            "hashes": [
+                "sha256:30733baaf8971902286a0ddf77e5499ac5f7bf8e7c39163e83d4f8c696ef265e",
+                "sha256:4d848cd782ee0893d7ad9fe2bfe535206a79f0b6760cecc5f2add831258b9322",
+                "sha256:8f747b190e6ad30e2d2fd5da9a64636f61aac8c038c0b7f685efa92c782ea14f",
+                "sha256:aae456205c68355f9597411090576bb31b614e53976b4c102d072bbe5db8392a",
+                "sha256:c587da8f521a7ce1b9efb4e3d0117cd63c92dc6cedff24590aeef89372f53012",
+                "sha256:ecc2baadeeefd2b6fbf39d13c65d4aa603afdda1c6aaaebc4577ba72893fee9e",
+                "sha256:fed9f5e4802769a416a8f2ca171c6be961d1861cc05a0b71d20dfe05423137e9"
+            ],
+            "index": "pypi",
+            "version": "==4.5.1"
+        },
+        "pyinstaller-hooks-contrib": {
+            "hashes": [
+                "sha256:57964f93eb69255c49159ffdf052aae893feed223b0f69773dfd010ca6c569d9",
+                "sha256:7f5d0689b30da3092149fc536a835a94045ac8c9f0e6dfb23ac171890f5ea8f2"
+            ],
+            "version": "==2021.2"
+        }
+    }
 }
